@@ -20,6 +20,7 @@ int main()
     std::string timerString;
     std::string msString;
 
+    SetConfigFlags(FLAG_WINDOW_RESIZABLE);
     InitWindow(800, 600, "Timer");
     SetTargetFPS(60);
 
@@ -113,7 +114,8 @@ int main()
 
         BeginDrawing();
         ClearBackground(WHITE);
-        DrawText(timerString.c_str(), 400, 300, 20, BLACK);
+        int drawWidth = (GetScreenWidth() - MeasureText(timerString.c_str(), 20)) / 2;
+        DrawText(timerString.c_str(), drawWidth, 300, 20, BLACK);
         EndDrawing();
     }
 
